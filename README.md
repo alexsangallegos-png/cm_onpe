@@ -1,0 +1,1 @@
+🗳️ Plataforma web offline para la gestión, control de tiempos y cómputo de votos de los Coordinadores de Mesa (CM) de la ONPE en las Elecciones Regionales y Municipales (ERM 2026). Incluye cálculo automático de actas, hoja borrador interactiva y reportes automáticos por WhatsApp.
