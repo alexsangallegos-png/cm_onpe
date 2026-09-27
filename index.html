@@ -108,47 +108,12 @@
         </span>
       </div>
 
-      <!-- Selector de Perfil CM (Requiere contraseña obligatoria) -->
-      <div class="mb-4">
-        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">1. Seleccione el CM (o ingréselo manualmente):</label>
-        <div class="grid grid-cols-2 gap-2.5">
-          <!-- Botón Seleccionar Alexander -->
-          <button type="button" onclick="selectUserForLogin('alexander')" id="btnSelectAlexander" class="btn-press p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-750 border border-slate-700 hover:border-blue-500 text-left transition-all group">
-            <div class="flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-blue-900/80 text-blue-300 font-bold text-xs flex items-center justify-center flex-shrink-0">A</span>
-              <div class="truncate">
-                <span class="text-xs font-black text-white block group-hover:text-blue-300">CM Alexander</span>
-                <span class="text-[10px] text-slate-400 block font-medium">Coordinador de Mesa</span>
-              </div>
-            </div>
-            <div class="mt-2 text-[10px] text-blue-400 font-medium bg-blue-950/60 px-1.5 py-0.5 rounded border border-blue-900/40 text-center">
-              Mesas 004233 • 004234
-            </div>
-          </button>
-
-          <!-- Botón Seleccionar Ibet -->
-          <button type="button" onclick="selectUserForLogin('ibet')" id="btnSelectIbet" class="btn-press p-3 rounded-2xl bg-slate-800/80 hover:bg-slate-750 border border-slate-700 hover:border-blue-500 text-left transition-all group">
-            <div class="flex items-center gap-2">
-              <span class="w-7 h-7 rounded-lg bg-purple-900/80 text-purple-300 font-bold text-xs flex items-center justify-center flex-shrink-0">I</span>
-              <div class="truncate">
-                <span class="text-xs font-black text-white block group-hover:text-purple-300">CM Ibet</span>
-                <span class="text-[10px] text-slate-400 block font-medium">Coordinadora de Mesa</span>
-              </div>
-            </div>
-            <div class="mt-2 text-[10px] text-purple-400 font-medium bg-purple-950/60 px-1.5 py-0.5 rounded border border-purple-900/40 text-center">
-              Mesas 004203 • 004204
-            </div>
-          </button>
-        </div>
-        <p id="loginPromptMsg" class="text-[11px] text-blue-400 mt-2 text-center font-medium hidden"></p>
-      </div>
-
       <!-- Formal Login Form -->
-      <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-3.5">
+      <form id="formLogin" onsubmit="handleLoginSubmit(event)" class="space-y-3.5 mt-2">
         <div>
           <label class="text-xs font-bold text-slate-300 block mb-1">Usuario o DNI</label>
           <div class="relative">
-            <input type="text" id="loginUsername" required autocomplete="username" placeholder="alexander / ibet o N° DNI" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" id="loginUsername" required autocomplete="username" placeholder="Ingrese su Usuario o N° de DNI" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-slate-500 focus:ring-2 focus:ring-blue-500 focus:outline-none">
           </div>
         </div>
 
@@ -175,6 +140,22 @@
           <span>Ingresar al Sistema CM</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
+
+        <!-- Acceso Rápido Demo para Promoción / Demostración -->
+        <div class="pt-2">
+          <button type="button" onclick="loginAsDemo()" class="btn-press w-full py-2.5 px-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/70 text-slate-300 hover:text-white text-xs font-semibold flex items-center justify-between transition-all group shadow-sm">
+            <div class="flex items-center gap-2.5">
+              <span class="w-7 h-7 rounded-lg bg-blue-900/60 text-blue-300 flex items-center justify-center text-sm border border-blue-700/50">🚀</span>
+              <div class="text-left">
+                <span class="block text-xs font-bold text-white group-hover:text-blue-300">Modo Demostración / Promoción</span>
+                <span class="block text-[10px] text-slate-400">Usuario: <strong class="text-slate-200">demo</strong> • Clave: <strong class="text-slate-200">demo</strong></span>
+              </div>
+            </div>
+            <span class="text-[11px] font-bold text-blue-400 bg-blue-950 px-2 py-0.5 rounded border border-blue-800/60 flex items-center gap-1 group-hover:bg-blue-900 transition">
+              Probar Demo →
+            </span>
+          </button>
+        </div>
       </form>
 
       <div class="mt-4 pt-4 border-t border-slate-800 text-center space-y-1">
@@ -277,63 +258,70 @@
       </div>
     </div>
 
-    <!-- PROCESS STAGES STEPPER / NAV (7 Módulos Oficiales ONPE ERM 2026) -->
-    <div class="bg-slate-950/90 border-t border-slate-800/70 px-2 sm:px-4 py-1.5 overflow-x-auto no-scrollbar">
-      <div class="max-w-7xl mx-auto flex items-center justify-between gap-1 min-w-[680px]">
+    <!-- PROCESS STAGES STEPPER & CONSULTATION MODULES -->
+    <div class="bg-slate-950/95 border-t border-slate-800/80 px-2 sm:px-4 py-2 overflow-x-auto no-scrollbar">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-2.5 min-w-[720px]">
         
-        <!-- Step 1: Instalación -->
-        <button id="navBtnInstalacion" onclick="setStage('instalacion')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-blue-600/30 text-blue-300 border border-blue-500/50">
-          <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">1</span>
-          <span class="truncate">Instalación</span>
-        </button>
+        <!-- BLOQUE 1: JORNADA ELECTORAL EN MESA (ETAPAS OFICIALES 1 A 4) -->
+        <div class="flex items-center gap-1.5 flex-1 py-0.5">
+          <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mr-1 flex-shrink-0">Jornada:</span>
+          
+          <!-- Step 1: Instalación -->
+          <button id="navBtnInstalacion" onclick="setStage('instalacion')" class="flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-blue-600/30 text-blue-300 border border-blue-500/50 shadow-sm min-w-[105px]">
+            <span class="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black">1</span>
+            <span class="truncate">Instalación</span>
+          </button>
 
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-3.5 h-3.5 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
 
-        <!-- Step 2: Sufragio -->
-        <button id="navBtnSufragio" onclick="setStage('sufragio')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-          <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">2</span>
-          <span class="truncate">Sufragio</span>
-        </button>
+          <!-- Step 2: Sufragio -->
+          <button id="navBtnSufragio" onclick="setStage('sufragio')" class="flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 min-w-[100px]">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">2</span>
+            <span class="truncate">Sufragio</span>
+          </button>
 
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-3.5 h-3.5 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
 
-        <!-- Step 3: Escrutinio -->
-        <button id="navBtnEscrutinio" onclick="setStage('escrutinio')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-          <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">3</span>
-          <span class="truncate">Escrutinio</span>
-        </button>
+          <!-- Step 3: Escrutinio -->
+          <button id="navBtnEscrutinio" onclick="setStage('escrutinio')" class="flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 min-w-[105px]">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">3</span>
+            <span class="truncate">Escrutinio</span>
+          </button>
 
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-3.5 h-3.5 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
 
-        <!-- Step 4: Cierre & Repliegue -->
-        <button id="navBtnRepliegue" onclick="setStage('repliegue')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50">
-          <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">4</span>
-          <span class="truncate">Repliegue</span>
-        </button>
+          <!-- Step 4: Cierre & Repliegue -->
+          <button id="navBtnRepliegue" onclick="setStage('repliegue')" class="flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 min-w-[105px]">
+            <span class="w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black">4</span>
+            <span class="truncate">Repliegue</span>
+          </button>
+        </div>
 
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <!-- DIVISOR VERTICAL ENTRE JORNADA Y CONSULTAS -->
+        <div class="hidden md:block w-px h-6 bg-slate-800 flex-shrink-0 mx-1"></div>
 
-        <!-- Step 5: Prevención Actas (Mejora Oficial Unidad 6 Manual) -->
-        <button id="navBtnPrevencion" onclick="setStage('prevencion')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-amber-400/80 hover:text-amber-300 hover:bg-amber-950/40">
-          <span class="w-5 h-5 rounded-full bg-amber-950 text-amber-300 border border-amber-800 flex items-center justify-center text-[10px] font-black">5</span>
-          <span class="truncate">Prevención Actas</span>
-        </button>
+        <!-- BLOQUE 2: MÓDULOS DE CONSULTA Y APOYO (5, 6, 7 APARTE) -->
+        <div class="flex items-center gap-1.5 py-0.5 justify-start md:justify-end flex-shrink-0">
+          <span class="text-[10px] font-black text-slate-500 uppercase tracking-widest mr-1">Consultas:</span>
+          
+          <!-- Módulo 5: Prevención Actas -->
+          <button id="navBtnPrevencion" onclick="setStage('prevencion')" title="Guía Técnica de Prevención de Actas Observadas" class="py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-amber-300/80 hover:text-amber-200 hover:bg-amber-950/40 border border-slate-800 hover:border-amber-700/50 flex-shrink-0">
+            <span class="text-xs">🛡️</span>
+            <span class="truncate">5. Prevención</span>
+          </button>
 
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <!-- Módulo 6: Capacitación y Credenciales -->
+          <button id="navBtnCapacitacion" onclick="setStage('capacitacion')" title="Control Previo de Credenciales y Formato FM01" class="py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-emerald-300/80 hover:text-emerald-200 hover:bg-emerald-950/40 border border-slate-800 hover:border-emerald-700/50 flex-shrink-0">
+            <span class="text-xs">🪪</span>
+            <span class="truncate">6. Credenciales</span>
+          </button>
 
-        <!-- Step 6: Capacitación y Credenciales (Mejora Oficial Unidad 7 Manual) -->
-        <button id="navBtnCapacitacion" onclick="setStage('capacitacion')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-emerald-400/80 hover:text-emerald-300 hover:bg-emerald-950/40">
-          <span class="w-5 h-5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-800 flex items-center justify-center text-[10px] font-black">6</span>
-          <span class="truncate">Capacitación</span>
-        </button>
-
-        <svg class="w-3 h-3 text-slate-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-
-        <!-- Step 7: Carteles Oficiales de Candidatos (Art. 169 y 209 LOE / Art. 21 LEM) -->
-        <button id="navBtnCarteles" onclick="setStage('carteles')" class="flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-sky-400/90 hover:text-sky-300 hover:bg-sky-950/40">
-          <span class="w-5 h-5 rounded-full bg-sky-950 text-sky-300 border border-sky-800 flex items-center justify-center text-[10px] font-black">7</span>
-          <span class="truncate">Carteles Candidatos</span>
-        </button>
+          <!-- Módulo 7: Carteles Oficiales de Candidatos -->
+          <button id="navBtnCarteles" onclick="setStage('carteles')" title="Carteles Oficiales de Candidatos (Apurímac, Abancay, Curahuasi)" class="py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-sky-300/80 hover:text-sky-200 hover:bg-sky-950/40 border border-slate-800 hover:border-sky-700/50 flex-shrink-0">
+            <span class="text-xs">📜</span>
+            <span class="truncate">7. Carteles (4)</span>
+          </button>
+        </div>
 
       </div>
     </div>
@@ -353,8 +341,20 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Trabajando en:</span>
             <span id="currentMesaHeading" class="text-base sm:text-lg font-black text-white bg-slate-800 px-2 py-0.5 rounded-lg border border-slate-700">MESA 004233</span>
           </div>
-          <p class="text-xs text-slate-400 mt-0.5">
-            Local: <span id="currentLocalLabel" class="text-slate-200 font-medium">I.E. Integrada Curahuasi</span> • Aula: <span id="currentAulaLabel" class="text-slate-200 font-medium">101</span> • Distrito: <span class="text-blue-300 font-bold">Curahuasi</span> • Prov: <span class="text-slate-200 font-medium">Abancay</span> • Dpto: <span class="text-slate-200 font-medium">Apurímac</span>
+          <p class="text-xs text-slate-400 mt-1 flex items-center flex-wrap gap-1.5">
+            <span>Local: <strong id="currentLocalLabel" class="text-white font-semibold">I.E. Integrada Curahuasi</strong></span>
+            <span class="text-slate-600">•</span>
+            <span>Aula: <strong id="currentAulaLabel" class="text-white font-semibold">101</strong></span>
+            <span class="text-slate-600">•</span>
+            <span>Distrito: <strong id="currentDistritoLabel" class="text-blue-300 font-bold">Curahuasi</strong></span>
+            <span class="text-slate-600">•</span>
+            <span>Prov: <strong id="currentProvinciaLabel" class="text-slate-300 font-medium">Abancay</strong></span>
+            <span class="text-slate-600">•</span>
+            <span>Dpto: <strong id="currentDepartamentoLabel" class="text-slate-300 font-medium">Apurímac</strong></span>
+            <button type="button" onclick="openEditLocalAulaModal()" title="Editar Local de Votación y Aula" class="btn-press ml-1 px-2 py-0.5 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-700/60 text-[10px] font-bold inline-flex items-center gap-1 transition-all">
+              <svg class="w-3 h-3 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              <span>Editar Local / Aula</span>
+            </button>
           </p>
         </div>
       </div>
@@ -663,9 +663,11 @@
               <label class="text-xs font-bold text-blue-300">
                 (A) Total de Ciudadanos que Votaron
               </label>
-              <span class="text-[10px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Firmas en Padrón</span>
+              <button type="button" onclick="autocalcularSufragio('A')" class="text-[10px] font-mono text-blue-400 hover:text-blue-200 bg-blue-950/70 hover:bg-blue-900 border border-blue-800/80 px-2 py-0.5 rounded cursor-pointer transition">
+                Calcular (Recibidas - B)
+              </button>
             </div>
-            <input type="number" id="inputVotaronA" oninput="calculateSufragioBalance()" min="0" max="500" value="280" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-lg font-black text-amber-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
+            <input type="number" id="inputVotaronA" oninput="calculateSufragioBalance()" min="0" max="500" value="0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-lg font-black text-amber-300 focus:ring-2 focus:ring-amber-500 focus:outline-none">
             <span class="text-[11px] text-slate-400 mt-1 block">Conteo de firmas y huellas en la lista de electores</span>
           </div>
 
@@ -674,9 +676,11 @@
               <label class="text-xs font-bold text-slate-300">
                 (B) Cédulas No Utilizadas (Sobrantes)
               </label>
-              <span class="text-[10px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">Inutilizadas</span>
+              <button type="button" onclick="autocalcularSufragio('B')" class="text-[10px] font-mono text-slate-400 hover:text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 px-2 py-0.5 rounded cursor-pointer transition">
+                Calcular (Recibidas - A)
+              </button>
             </div>
-            <input type="number" id="inputNoUtilizadasB" oninput="calculateSufragioBalance()" min="0" max="500" value="20" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-lg font-black text-slate-200 focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="number" id="inputNoUtilizadasB" oninput="calculateSufragioBalance()" min="0" max="500" value="0" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-lg font-black text-slate-200 focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <span class="text-[11px] text-slate-400 mt-1 block">Cédulas sobrantes cortadas por la mitad</span>
           </div>
         </div>
@@ -770,14 +774,65 @@
           </div>
         </div>
 
-        <div class="pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-300">
-          <div class="flex items-center gap-2">
-            <span class="text-[11px] font-bold text-slate-400">Hora Inicio Escrutinio:</span>
-            <span class="font-mono font-bold text-emerald-300 bg-slate-800 px-2 py-0.5 rounded">5:30 p. m.</span>
+        <div class="pt-2 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-300">
+          <!-- Hora Inicio Escrutinio -->
+          <div class="flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/80">
+            <span class="text-[10px] font-bold text-slate-400 px-1">Hora Inicio:</span>
+            <select id="timeEscrutinioInicioHour" onchange="updateEscrutinioHoras()" class="bg-slate-800 border border-slate-700 text-white font-bold text-xs rounded-lg px-1.5 py-1 text-center">
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+            </select>
+            <span class="font-bold text-slate-500">:</span>
+            <select id="timeEscrutinioInicioMinute" onchange="updateEscrutinioHoras()" class="bg-slate-800 border border-slate-700 text-white font-bold text-xs rounded-lg px-1.5 py-1 text-center">
+              <option value="00">00</option>
+              <option value="05">05</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            <select id="timeEscrutinioInicioPeriod" onchange="updateEscrutinioHoras()" class="bg-emerald-950 border border-emerald-700 text-emerald-200 font-bold text-[11px] rounded-lg px-1.5 py-1">
+              <option value="p. m." selected>p. m.</option>
+              <option value="a. m.">a. m.</option>
+            </select>
+            <button type="button" onclick="set12HourCurrentTime('timeEscrutinioInicio')" title="Hora actual (12h)" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-300 border border-slate-700 btn-press">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-[11px] font-bold text-slate-400">Hora Término Escrutinio:</span>
-            <span class="font-mono font-bold text-sky-300 bg-slate-800 px-2 py-0.5 rounded">7:30 p. m.</span>
+
+          <!-- Hora Término Escrutinio -->
+          <div class="flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-xl border border-slate-700/80">
+            <span class="text-[10px] font-bold text-slate-400 px-1">Hora Término:</span>
+            <select id="timeEscrutinioFinHour" onchange="updateEscrutinioHoras()" class="bg-slate-800 border border-slate-700 text-white font-bold text-xs rounded-lg px-1.5 py-1 text-center">
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+            </select>
+            <span class="font-bold text-slate-500">:</span>
+            <select id="timeEscrutinioFinMinute" onchange="updateEscrutinioHoras()" class="bg-slate-800 border border-slate-700 text-white font-bold text-xs rounded-lg px-1.5 py-1 text-center">
+              <option value="00">00</option>
+              <option value="05">05</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="30" selected>30</option>
+              <option value="45">45</option>
+            </select>
+            <select id="timeEscrutinioFinPeriod" onchange="updateEscrutinioHoras()" class="bg-sky-950 border border-sky-700 text-sky-200 font-bold text-[11px] rounded-lg px-1.5 py-1">
+              <option value="p. m." selected>p. m.</option>
+              <option value="a. m.">a. m.</option>
+            </select>
+            <button type="button" onclick="set12HourCurrentTime('timeEscrutinioFin')" title="Hora actual (12h)" class="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-sky-300 border border-slate-700 btn-press">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </button>
           </div>
         </div>
       </div>
@@ -1210,6 +1265,15 @@
           </div>
         </div>
       </div>
+
+      <!-- Retorno a la Mesa Jornada -->
+      <div class="pt-2 flex items-center justify-between gap-3">
+        <button type="button" onclick="returnToMesaJornada()" class="btn-press px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Volver a la Mesa de Votación</span>
+        </button>
+        <span class="text-xs text-slate-400">Módulo 5: Prevención de Actas Observadas (Unidad 6)</span>
+      </div>
     </section>
 
     <!-- ======================================================== -->
@@ -1271,12 +1335,21 @@
 
       <!-- Control de Entrega de Credenciales por Mesa -->
       <div class="glass-card p-4 sm:p-5 rounded-2xl space-y-3">
-        <div class="flex items-center justify-between">
-          <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
-            <span>🪪 Control de Credenciales en Mesa</span>
-            <span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-blue-300" id="credencialesMesaLabel">004233</span>
-          </h3>
-          <span class="text-xs text-slate-400">Total: 9 designados (<strong id="credencialesEntregadasCount" class="text-emerald-400 font-bold">0</strong> entregadas)</span>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
+          <div class="flex items-center gap-2">
+            <h3 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+              <span>🪪 Control de Credenciales en Mesa</span>
+              <span class="font-mono text-xs px-2 py-0.5 rounded bg-slate-800 text-blue-300" id="credencialesMesaLabel">004233</span>
+            </h3>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <input type="text" id="inputSearchCredencial" oninput="renderCredencialesModule()" placeholder="Buscar por DNI o nombre..." class="px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white placeholder-slate-500 focus:ring-1 focus:ring-emerald-500 focus:outline-none w-44">
+            <span class="text-xs text-slate-400 hidden sm:inline">Total: 9 (<strong id="credencialesEntregadasCount" class="text-emerald-400 font-bold">0</strong> entregadas • <strong id="credencialesCapacitadosCount" class="text-blue-400 font-bold">0</strong> capacitados)</span>
+            <button type="button" onclick="openEditCredencialModal(0)" class="btn-press px-2.5 py-1 rounded-lg bg-emerald-900/60 hover:bg-emerald-800 text-emerald-200 border border-emerald-700/60 text-xs font-bold flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              <span>Editar</span>
+            </button>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="credencialesGridContainer">
@@ -1315,6 +1388,15 @@
           </div>
         </div>
       </div>
+
+      <!-- Retorno a la Mesa Jornada -->
+      <div class="pt-2 flex items-center justify-between gap-3">
+        <button type="button" onclick="returnToMesaJornada()" class="btn-press px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Volver a la Mesa de Votación</span>
+        </button>
+        <span class="text-xs text-slate-400">Módulo 6: Control de Credenciales y Formatos (Unidad 7)</span>
+      </div>
     </section>
 
     <!-- ======================================================== -->
@@ -1342,9 +1424,9 @@
 
           <!-- Quick Action Buttons -->
           <div class="flex items-center gap-2 self-start flex-wrap">
-            <button onclick="openAdminPartidosModal()" class="btn-press px-3.5 py-2 rounded-xl bg-indigo-900/80 hover:bg-indigo-800 text-indigo-200 border border-indigo-600/60 text-xs font-bold flex items-center gap-1.5 shadow-sm">
-              <svg class="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-              <span>Editar Candidatos y Logos</span>
+            <button onclick="returnToMesaJornada()" class="btn-press px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+              <span>Volver a la Mesa</span>
             </button>
             <button onclick="printCurrentCartel()" class="btn-press px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-600 text-xs font-bold flex items-center gap-1.5 shadow-sm">
               <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
@@ -1431,6 +1513,14 @@
         </div>
       </div>
 
+      <!-- Retorno a la Mesa Jornada -->
+      <div class="pt-2 flex items-center justify-between gap-3">
+        <button type="button" onclick="returnToMesaJornada()" class="btn-press px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          <span>Volver a la Mesa de Votación</span>
+        </button>
+        <span class="text-xs text-slate-400">Módulo 7: Carteles Oficiales de Candidatos ONPE</span>
+      </div>
     </section>
 
   </main>
@@ -1593,6 +1683,222 @@
             <span>Abrir WhatsApp</span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: EDITAR MIEMBRO DE MESA                           -->
+  <!-- ======================================================== -->
+  <div id="modalEditarMiembro" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="glass-panel w-full max-w-lg rounded-3xl p-5 sm:p-6 border border-slate-700 shadow-2xl space-y-4 my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-900/60 border border-blue-700/60 flex items-center justify-center text-blue-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-white" id="modalEditMiembroTitle">Editar Miembro de Mesa</h3>
+            <p class="text-xs text-slate-400">Actualizar datos de titular, suplente o miembro de la fila.</p>
+          </div>
+        </div>
+        <button onclick="closeEditMiembroModal()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <input type="hidden" id="editMiembroIndex" value="0">
+
+      <div class="space-y-3.5 text-xs text-slate-300">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Cargo en la Mesa</label>
+          <select id="editMiembroCargo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-semibold focus:outline-none focus:border-blue-500">
+            <option value="Presidente">Presidente</option>
+            <option value="Secretario">Secretario</option>
+            <option value="Tercer Miembro">Tercer Miembro</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Nombres y Apellidos Completos</label>
+          <input type="text" id="editMiembroNombre" placeholder="Ej: Juan Carlos Pérez Gómez" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">DNI (8 dígitos)</label>
+            <input type="text" id="editMiembroDni" maxlength="8" placeholder="Ej: 45892134" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 font-mono font-bold text-white focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Condición / Origen</label>
+            <select id="editMiembroCondicion" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+              <option value="Titular">Titular</option>
+              <option value="1er Suplente">1er Suplente</option>
+              <option value="2do Suplente">2do Suplente</option>
+              <option value="3er Suplente">3er Suplente</option>
+              <option value="4to Suplente">4to Suplente</option>
+              <option value="5to Suplente">5to Suplente</option>
+              <option value="6to Suplente">6to Suplente</option>
+              <option value="De la Fila">De la Fila (Elector voluntario)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verificaciones de Instalación:</span>
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="editMiembroAsistencia" class="rounded bg-slate-950 border-slate-700 text-blue-600 focus:ring-blue-500">
+              <span class="text-xs text-slate-200">Firmó Asistencia</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="editMiembroFirmaActa" class="rounded bg-slate-950 border-slate-700 text-emerald-600 focus:ring-emerald-500">
+              <span class="text-xs text-emerald-300 font-bold">Firmó Acta de Instalación</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-700 flex items-center justify-end gap-2.5">
+        <button onclick="closeEditMiembroModal()" class="btn-press px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cancelar
+        </button>
+        <button onclick="saveMiembroModal()" class="btn-press px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-blue-900/40">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Guardar Cambios
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: EDITAR CREDENCIAL DE MIEMBRO DESIGNADO           -->
+  <!-- ======================================================== -->
+  <div id="modalEditarCredencial" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="glass-panel w-full max-w-lg rounded-3xl p-5 sm:p-6 border border-slate-700 shadow-2xl space-y-4 my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-emerald-900/60 border border-emerald-700/60 flex items-center justify-center text-emerald-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-white" id="modalEditCredencialTitle">Editar Credencial</h3>
+            <p class="text-xs text-slate-400">Actualizar datos del miembro sorteado o capacitado.</p>
+          </div>
+        </div>
+        <button onclick="closeEditCredencialModal()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <input type="hidden" id="editCredencialIndex" value="0">
+
+      <div class="space-y-3.5 text-xs text-slate-300">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Cargo / Designación</label>
+          <input type="text" id="editCredencialCargo" placeholder="Ej: Presidente (Titular), 1er Suplente..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-semibold focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Nombres y Apellidos Completos</label>
+          <input type="text" id="editCredencialNombre" placeholder="Ej: María Jesús Brabo Arbildo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">DNI (8 dígitos)</label>
+            <input type="text" id="editCredencialDni" maxlength="8" placeholder="Ej: 45892134" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 font-mono font-bold text-white focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Teléfono / Celular (Opcional)</label>
+            <input type="text" id="editCredencialTelefono" maxlength="9" placeholder="Ej: 987654321" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 font-mono text-white focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+
+        <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 space-y-2.5">
+          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Estado de Entrega y Capacitación (ONPE):</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <label class="flex items-center gap-2 cursor-pointer p-2 rounded-lg bg-slate-950/60 border border-slate-800">
+              <input type="checkbox" id="editCredencialEntregada" class="rounded bg-slate-900 border-slate-700 text-emerald-600 focus:ring-emerald-500">
+              <span class="text-xs text-emerald-300 font-bold">Credencial Entregada</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer p-2 rounded-lg bg-slate-950/60 border border-slate-800">
+              <input type="checkbox" id="editCredencialCapacitado" class="rounded bg-slate-900 border-slate-700 text-blue-600 focus:ring-blue-500">
+              <span class="text-xs text-blue-300 font-bold">Capacitado (FM01)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-700 flex items-center justify-end gap-2.5">
+        <button onclick="closeEditCredencialModal()" class="btn-press px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cancelar
+        </button>
+        <button onclick="saveCredencialModal()" class="btn-press px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-emerald-900/40">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Guardar Credencial
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: EDITAR LOCAL DE VOTACIÓN Y AULA                  -->
+  <!-- ======================================================== -->
+  <div id="modalEditarLocalAula" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+    <div class="glass-panel w-full max-w-md rounded-3xl p-5 sm:p-6 border border-slate-700 shadow-2xl space-y-4 my-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-700">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-blue-900/60 border border-blue-700/60 flex items-center justify-center text-blue-300">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-white">Editar Local y Aula</h3>
+            <p class="text-xs text-slate-400">Actualizar ubicación oficial de la mesa.</p>
+          </div>
+        </div>
+        <button onclick="closeEditLocalAulaModal()" class="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div class="space-y-3.5 text-xs text-slate-300">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Nombre del Local de Votación</label>
+          <input type="text" id="inputEditLocalNombre" placeholder="Ej: I.E. Integrada Curahuasi" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-semibold focus:outline-none focus:border-blue-500">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">N° o Nombre de Aula</label>
+            <input type="text" id="inputEditAula" placeholder="Ej: 101, 102, Aula 3" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-bold focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Distrito</label>
+            <input type="text" id="inputEditDistrito" placeholder="Ej: Curahuasi" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Provincia</label>
+            <input type="text" id="inputEditProvincia" placeholder="Ej: Abancay" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-1">Departamento</label>
+            <input type="text" id="inputEditDepartamento" placeholder="Ej: Apurímac" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-white font-medium focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-700 flex items-center justify-end gap-2.5">
+        <button onclick="closeEditLocalAulaModal()" class="btn-press px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold">
+          Cancelar
+        </button>
+        <button onclick="saveLocalAulaModal()" class="btn-press px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold flex items-center gap-1.5 shadow-lg shadow-blue-900/40">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          Guardar Ubicación
+        </button>
       </div>
     </div>
   </div>
@@ -1866,6 +2172,19 @@
         mesas: ['004203', '004204'],
         aula: '102',
         local: 'I.E. Integrada Curahuasi',
+        distrito: 'Curahuasi',
+        provincia: 'Abancay',
+        departamento: 'Apurímac'
+      },
+      'demo': {
+        username: 'demo',
+        displayName: 'CM Demo (Promoción)',
+        dni: '12345678',
+        password: 'demo',
+        passwords: ['demo', '12345678', 'demo123', 'demo2026'],
+        mesas: ['009901', '009902'],
+        aula: 'Aula 101 (Demo)',
+        local: 'I.E. Demostración Electoral Curahuasi',
         distrito: 'Curahuasi',
         provincia: 'Abancay',
         departamento: 'Apurímac'
@@ -2679,7 +2998,7 @@
 
       if (!identifier || identifier.trim() === '') {
         errorBox.classList.remove('hidden');
-        errorText.innerText = 'Debe ingresar un usuario o DNI válido (alexander / ibet).';
+        errorText.innerText = 'Debe ingresar un usuario o DNI válido (alexander / ibet / demo).';
         document.getElementById('loginUsername').focus();
         return;
       }
@@ -2694,11 +3013,12 @@
       let matchedUser = null;
       Object.keys(USERS_DB).forEach(k => {
         const u = USERS_DB[k];
+        const passMatch = (u.password === password) || (Array.isArray(u.passwords) && u.passwords.includes(password));
         if (
           (u.username.toLowerCase() === identifier.toLowerCase() || 
            u.displayName.toLowerCase() === identifier.toLowerCase() || 
            u.dni === identifier) &&
-          u.password === password
+          passMatch
         ) {
           matchedUser = u;
         }
@@ -2717,6 +3037,14 @@
       }
     }
 
+    function loginAsDemo() {
+      const uInput = document.getElementById('loginUsername');
+      const pInput = document.getElementById('loginPassword');
+      if (uInput) uInput.value = 'demo';
+      if (pInput) pInput.value = 'demo';
+      executeLogin('demo', 'demo');
+    }
+
     function logoutUser() {
       if (!confirm(`¿Cerrar la sesión de ${currentUser ? currentUser.displayName : 'CM'}?`)) return;
       localStorage.removeItem(SESSION_STORAGE_KEY);
@@ -2730,13 +3058,90 @@
       if (promptEl) promptEl.classList.add('hidden');
     }
 
+    const USER_LOCATION_KEY_PREFIX = 'onpe_erm2026_user_location_';
+
+    function getUserLocation(username) {
+      if (!username) return null;
+      try {
+        const stored = localStorage.getItem(USER_LOCATION_KEY_PREFIX + username);
+        if (stored) return JSON.parse(stored);
+      } catch(e) {}
+      return null;
+    }
+
+    function saveUserLocation(username, locObj) {
+      if (!username) return;
+      localStorage.setItem(USER_LOCATION_KEY_PREFIX + username, JSON.stringify(locObj));
+    }
+
+    function openEditLocalAulaModal() {
+      if (!currentUser) return;
+      document.getElementById('inputEditLocalNombre').value = currentUser.local || '';
+      document.getElementById('inputEditAula').value = currentUser.aula || '';
+      document.getElementById('inputEditDistrito').value = currentUser.distrito || '';
+      document.getElementById('inputEditProvincia').value = currentUser.provincia || '';
+      document.getElementById('inputEditDepartamento').value = currentUser.departamento || '';
+      document.getElementById('modalEditarLocalAula').classList.remove('hidden');
+    }
+
+    function closeEditLocalAulaModal() {
+      document.getElementById('modalEditarLocalAula').classList.add('hidden');
+    }
+
+    function saveLocalAulaModal() {
+      if (!currentUser) return;
+      const local = document.getElementById('inputEditLocalNombre').value.trim() || 'Local de Votación';
+      const aula = document.getElementById('inputEditAula').value.trim() || '101';
+      const distrito = document.getElementById('inputEditDistrito').value.trim() || 'Curahuasi';
+      const provincia = document.getElementById('inputEditProvincia').value.trim() || 'Abancay';
+      const departamento = document.getElementById('inputEditDepartamento').value.trim() || 'Apurímac';
+
+      currentUser.local = local;
+      currentUser.aula = aula;
+      currentUser.distrito = distrito;
+      currentUser.provincia = provincia;
+      currentUser.departamento = departamento;
+
+      saveUserLocation(currentUser.username, {
+        local, aula, distrito, provincia, departamento
+      });
+
+      updateLocationDisplay();
+      closeEditLocalAulaModal();
+    }
+
+    function updateLocationDisplay() {
+      if (!currentUser) return;
+      const elLocal = document.getElementById('currentLocalLabel');
+      const elAula = document.getElementById('currentAulaLabel');
+      const elDist = document.getElementById('currentDistritoLabel');
+      const elProv = document.getElementById('currentProvinciaLabel');
+      const elDpto = document.getElementById('currentDepartamentoLabel');
+
+      if (elLocal) elLocal.innerText = currentUser.local || 'Local de Votación';
+      if (elAula) elAula.innerText = currentUser.aula || '101';
+      if (elDist) elDist.innerText = currentUser.distrito || 'Curahuasi';
+      if (elProv) elProv.innerText = currentUser.provincia || 'Abancay';
+      if (elDpto) elDpto.innerText = currentUser.departamento || 'Apurímac';
+    }
+
     function initUserEnvironment() {
       if (!currentUser) return;
+
+      // Load custom saved location if exists
+      const savedLocation = getUserLocation(currentUser.username);
+      if (savedLocation) {
+        currentUser.local = savedLocation.local || currentUser.local;
+        currentUser.aula = savedLocation.aula || currentUser.aula;
+        currentUser.distrito = savedLocation.distrito || currentUser.distrito;
+        currentUser.provincia = savedLocation.provincia || currentUser.provincia;
+        currentUser.departamento = savedLocation.departamento || currentUser.departamento;
+      }
 
       // Update Header info
       document.getElementById('headerUserName').innerText = currentUser.displayName;
       document.getElementById('headerUserDni').innerText = `DNI: ${currentUser.dni}`;
-      document.getElementById('currentAulaLabel').innerText = currentUser.aula || '101';
+      updateLocationDisplay();
 
       // Render Dynamic Mesa Tabs
       renderMesaTabs();
@@ -2822,80 +3227,96 @@
     }
 
     function getDefaultMesaState(mesaNumber) {
+      const isDemoFilled = (mesaNumber === '009901');
       return {
         mesaNumber: mesaNumber,
-        stage: 'instalacion',
-        status: 'Instalando',
-        progressPercent: 0,
+        stage: isDemoFilled ? 'escrutinio' : 'instalacion',
+        status: isDemoFilled ? 'Concluida' : 'Instalando',
+        progressPercent: isDemoFilled ? 100 : 0,
         instalacion: {
           electoresHabiles: 300,
           cedulasRecibidas: 300,
           horaInstalacion: "7:00 a. m.",
           materialBuenEstado: true,
           miembros: [
-            { cargo: "Presidente", nombre: "María Jesús Brabo Arbildo", dni: "00000114", condicion: "Titular", firmoAsistencia: false, firmoActa: false },
-            { cargo: "Secretario", nombre: "Jesús Emanuel De la Rocha Oliva", dni: "00000109", condicion: "Titular", firmoAsistencia: false, firmoActa: false },
-            { cargo: "Tercer Miembro", nombre: "Ostrar Cortina Natalo", dni: "00000253", condicion: "Titular", firmoAsistencia: false, firmoActa: false }
+            { cargo: "Presidente", nombre: "María Jesús Brabo Arbildo", dni: "00000114", condicion: "Titular", firmoAsistencia: isDemoFilled, firmoActa: isDemoFilled },
+            { cargo: "Secretario", nombre: "Jesús Emanuel De la Rocha Oliva", dni: "00000109", condicion: "Titular", firmoAsistencia: isDemoFilled, firmoActa: isDemoFilled },
+            { cargo: "Tercer Miembro", nombre: "Ostrar Cortina Natalo", dni: "00000253", condicion: "Titular", firmoAsistencia: isDemoFilled, firmoActa: isDemoFilled }
           ],
           checklist: {
-            cabinasAcondicionadas: false,
-            cartelesPegados: false,
-            anforaVaciaCerrada: false,
-            senaleticaAula: false,
-            utilesListos: false
+            cabinasAcondicionadas: isDemoFilled,
+            cartelesPegados: isDemoFilled,
+            anforaVaciaCerrada: isDemoFilled,
+            senaleticaAula: isDemoFilled,
+            utilesListos: isDemoFilled
           }
         },
         sufragio: {
-          votaronA: 0,
-          noUtilizadasB: 0,
+          votaronA: isDemoFilled ? 280 : 0,
+          noUtilizadasB: isDemoFilled ? 20 : 0,
           horaCierre: "5:00 p. m.",
           checklist: {
-            padronFirmaCierre: false,
-            corteCedulasSobrantes: false,
-            firmasActaSufragio: false
+            padronFirmaCierre: isDemoFilled,
+            corteCedulasSobrantes: isDemoFilled,
+            firmasActaSufragio: isDemoFilled
           },
           contingencias: {
             impugnacionesIdentidad: 0,
             suplantaciones: 0,
-            preferentes: 0
+            preferentes: isDemoFilled ? 2 : 0
           }
         },
         escrutinio: {
-          anforaCedulasContadas: 0,
+          anforaCedulasContadas: isDemoFilled ? 280 : 0,
           tipoCedula: '4col',
-          horaInicio: "5:00 p. m.",
-          horaFin: "7:00 p. m.",
-          partidos: PARTIDOS_CATALOGO.map(org => ({
-            id: org.id,
-            codigo: org.codigo,
-            nombre: org.nombre,
-            votos: { gob: 0, cons: 0, prov: 0, dist: 0 },
-            participa: org.participa,
-            customLogo: org.customLogo || null
-          })),
+          horaInicio: "5:30 p. m.",
+          horaFin: "7:30 p. m.",
+          partidos: PARTIDOS_CATALOGO.map(org => {
+            let defVotos = { gob: 0, cons: 0, prov: 0, dist: 0 };
+            if (isDemoFilled) {
+              if (org.id === 1) defVotos = { gob: 65, cons: 60, prov: 40, dist: 50 };
+              else if (org.id === 2) defVotos = { gob: 55, cons: 50, prov: 35, dist: 45 };
+              else if (org.id === 3) defVotos = { gob: 45, cons: 45, prov: 30, dist: 35 };
+              else if (org.id === 4) defVotos = { gob: 35, cons: 35, prov: 30, dist: 30 };
+              else if (org.id === 5) defVotos = { gob: 30, cons: 30, prov: 25, dist: 25 };
+              else if (org.id === 6) defVotos = { gob: 25, cons: 25, prov: 25, dist: 25 };
+              else if (org.id === 7) defVotos = { gob: 15, cons: 15, prov: 20, dist: 20 };
+              else if (org.id === 8) defVotos = { gob: 10, cons: 10, prov: 20, dist: 15 };
+              else if (org.id === 9) defVotos = { gob: 0, cons: 0, prov: 20, dist: 15 };
+              else if (org.id === 10) defVotos = { gob: 0, cons: 0, prov: 25, dist: 10 };
+            }
+            return {
+              id: org.id,
+              codigo: org.codigo,
+              nombre: org.nombre,
+              votos: defVotos,
+              participa: org.participa,
+              customLogo: org.customLogo || null
+            };
+          }),
           votosEspeciales: {
-            blanco: { gob: 0, cons: 0, prov: 0, dist: 0 },
-            nulos: { gob: 0, cons: 0, prov: 0, dist: 0 },
+            blanco: { gob: 0, cons: isDemoFilled ? 5 : 0, prov: isDemoFilled ? 5 : 0, dist: isDemoFilled ? 5 : 0 },
+            nulos: { gob: 0, cons: isDemoFilled ? 5 : 0, prov: isDemoFilled ? 5 : 0, dist: isDemoFilled ? 5 : 0 },
             impugnados: { gob: 0, cons: 0, prov: 0, dist: 0 }
           },
-          observacionesTexto: ""
+          observacionesTexto: isDemoFilled ? "Conteo conforme sin incidencias en mesa." : ""
         },
         repliegue: {
-          firmas3SeccionesCompletas: false,
-          laminaProteccionPloma: false,
-          numerosLegibles: false,
+          firmas3SeccionesCompletas: isDemoFilled,
+          laminaProteccionPloma: isDemoFilled,
+          numerosLegibles: isDemoFilled,
           sobres: {
-            plomo: false,
-            celeste: false,
-            verde: false,
-            rojo: false
+            plomo: isDemoFilled,
+            celeste: isDemoFilled,
+            verde: isDemoFilled,
+            rojo: isDemoFilled
           },
           cedulasNoImpugnadas: {
-            cantidad: 0,
+            cantidad: isDemoFilled ? 280 : 0,
             numeroPrecinto: `PRC-2026-${mesaNumber}`,
-            rotuloFirmado: false
+            rotuloFirmado: isDemoFilled
           },
-          finalizada: false
+          finalizada: isDemoFilled
         }
       };
     }
@@ -2991,10 +3412,17 @@
       renderCredencialesModule();
     }
 
+    let lastJornadaStage = 'instalacion';
+
+    function returnToMesaJornada() {
+      setStage(lastJornadaStage || 'instalacion');
+    }
+
     function setStage(stageName) {
       const state = getMesaState(activeMesa);
-      if (['instalacion', 'sufragio', 'escrutinio', 'repliegue', 'carteles'].includes(stageName)) {
+      if (['instalacion', 'sufragio', 'escrutinio', 'repliegue'].includes(stageName)) {
         state.stage = stageName;
+        lastJornadaStage = stageName;
         saveMesaState(activeMesa, state);
       }
 
@@ -3012,29 +3440,48 @@
         if (el) el.classList.add('hidden');
       });
 
-      const navBtns = {
+      // 1. Estilos para los 4 Pasos de la Jornada Electoral en Mesa
+      const jornadaBtns = {
         'instalacion': 'navBtnInstalacion',
         'sufragio': 'navBtnSufragio',
         'escrutinio': 'navBtnEscrutinio',
-        'repliegue': 'navBtnRepliegue',
-        'prevencion': 'navBtnPrevencion',
-        'capacitacion': 'navBtnCapacitacion',
-        'carteles': 'navBtnCarteles'
+        'repliegue': 'navBtnRepliegue'
       };
 
-      Object.keys(navBtns).forEach(k => {
-        const btn = document.getElementById(navBtns[k]);
+      Object.keys(jornadaBtns).forEach(k => {
+        const btn = document.getElementById(jornadaBtns[k]);
         if (!btn) return;
         if (k === stageName) {
-          btn.className = "flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-blue-600/30 text-blue-300 border border-blue-500/50";
+          btn.className = "flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 bg-blue-600/30 text-blue-300 border border-blue-500/50 shadow-sm min-w-[105px]";
           const badge = btn.querySelector('span:first-child');
           if (badge) badge.className = "w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-black";
         } else {
-          btn.className = "flex-1 py-1.5 px-2 rounded-lg text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50";
+          btn.className = "flex-1 py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 min-w-[100px]";
           const badge = btn.querySelector('span:first-child');
           if (badge) badge.className = "w-5 h-5 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center text-[10px] font-black";
         }
       });
+
+      // 2. Estilos para los 3 Módulos de Consulta y Apoyo (5, 6, 7 Aparte)
+      const btnPrev = document.getElementById('navBtnPrevencion');
+      const btnCap = document.getElementById('navBtnCapacitacion');
+      const btnCart = document.getElementById('navBtnCarteles');
+
+      if (btnPrev) {
+        btnPrev.className = (stageName === 'prevencion')
+          ? "py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-amber-950/70 text-amber-300 border border-amber-500/70 shadow-sm flex-shrink-0"
+          : "py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-amber-300/80 hover:text-amber-200 hover:bg-amber-950/40 border border-slate-800 hover:border-amber-700/50 flex-shrink-0";
+      }
+      if (btnCap) {
+        btnCap.className = (stageName === 'capacitacion')
+          ? "py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-emerald-950/70 text-emerald-300 border border-emerald-500/70 shadow-sm flex-shrink-0"
+          : "py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-emerald-300/80 hover:text-emerald-200 hover:bg-emerald-950/40 border border-slate-800 hover:border-emerald-700/50 flex-shrink-0";
+      }
+      if (btnCart) {
+        btnCart.className = (stageName === 'carteles')
+          ? "py-1.5 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 bg-sky-950/70 text-sky-300 border border-sky-500/70 shadow-sm flex-shrink-0"
+          : "py-1.5 px-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 text-sky-300/80 hover:text-sky-200 hover:bg-sky-950/40 border border-slate-800 hover:border-sky-700/50 flex-shrink-0";
+      }
 
       if (stageName === 'instalacion') document.getElementById('sectionInstalacion').classList.remove('hidden');
       if (stageName === 'sufragio') document.getElementById('sectionSufragio').classList.remove('hidden');
@@ -3098,6 +3545,17 @@
       document.getElementById('inputAnforaCedulas').value = state.escrutinio.anforaCedulasContadas;
       document.getElementById('selectTipoCedula').value = state.escrutinio.tipoCedula || '4col';
       document.getElementById('textareaObservaciones').value = state.escrutinio.observacionesTexto || '';
+
+      const timeEscIniParsed = parse12HourTime(state.escrutinio.horaInicio, 5, '30', 'p. m.');
+      document.getElementById('timeEscrutinioInicioHour').value = timeEscIniParsed.hour;
+      document.getElementById('timeEscrutinioInicioMinute').value = timeEscIniParsed.minute;
+      document.getElementById('timeEscrutinioInicioPeriod').value = timeEscIniParsed.period;
+
+      const timeEscFinParsed = parse12HourTime(state.escrutinio.horaFin, 7, '30', 'p. m.');
+      document.getElementById('timeEscrutinioFinHour').value = timeEscFinParsed.hour;
+      document.getElementById('timeEscrutinioFinMinute').value = timeEscFinParsed.minute;
+      document.getElementById('timeEscrutinioFinPeriod').value = timeEscFinParsed.period;
+
       verifyAnforaCedulas();
       renderHojaBorradorTable();
 
@@ -3164,10 +3622,10 @@
 
       miembros.forEach((m, idx) => {
         const div = document.createElement('div');
-        div.className = "p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5";
+        div.className = "p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 hover:border-slate-700 transition-colors";
         div.innerHTML = `
           <div class="flex items-center gap-3 min-w-0">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/60 text-blue-300 font-bold text-xs flex items-center justify-center flex-shrink-0 border border-blue-700/50">
+            <span class="w-8 h-8 rounded-lg bg-blue-900/60 text-blue-300 font-bold text-xs flex items-center justify-center flex-shrink-0 border border-blue-700/50">
               ${idx === 0 ? 'P' : idx === 1 ? 'S' : '3M'}
             </span>
             <div class="truncate">
@@ -3176,22 +3634,26 @@
                 <span class="text-xs text-slate-200 font-semibold truncate">${m.nombre}</span>
               </div>
               <div class="flex items-center gap-2 text-[11px] text-slate-400 mt-0.5">
-                <span>DNI: <strong class="font-mono text-slate-300">${m.dni}</strong></span>
+                <span>DNI: <strong class="font-mono text-slate-300">${m.dni || 'Sin registrar'}</strong></span>
                 <span>•</span>
-                <span class="px-1.5 py-0.2 rounded bg-slate-800 text-blue-300 text-[10px] font-medium">${m.condicion}</span>
+                <span class="px-1.5 py-0.2 rounded bg-slate-800 text-blue-300 text-[10px] font-medium">${m.condicion || 'Titular'}</span>
               </div>
             </div>
           </div>
 
-          <div class="flex items-center gap-4 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-800">
+          <div class="flex items-center gap-3 pt-1 sm:pt-0 border-t sm:border-t-0 border-slate-800 self-end sm:self-auto">
             <label class="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer">
               <input type="checkbox" onchange="toggleMiembroField(${idx}, 'firmoAsistencia')" ${m.firmoAsistencia ? 'checked' : ''} class="rounded bg-slate-950 border-slate-700 text-blue-600 focus:ring-blue-500">
               <span class="text-[11px]">Asistencia</span>
             </label>
             <label class="flex items-center gap-1.5 text-xs text-slate-300 cursor-pointer">
               <input type="checkbox" onchange="toggleMiembroField(${idx}, 'firmoActa')" ${m.firmoActa ? 'checked' : ''} class="rounded bg-slate-950 border-slate-700 text-emerald-600 focus:ring-emerald-500">
-              <span class="text-[11px] font-bold text-emerald-300">Firma Acta Inst.</span>
+              <span class="text-[11px] font-bold text-emerald-300">Firma Acta</span>
             </label>
+            <button type="button" onclick="openEditMiembroModal(${idx})" title="Editar datos del miembro" class="btn-press px-2.5 py-1 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-700/60 text-xs font-bold flex items-center gap-1">
+              <svg class="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+              <span>Editar</span>
+            </button>
           </div>
         `;
         container.appendChild(div);
@@ -3205,27 +3667,81 @@
       renderMiembrosMesa(state.instalacion.miembros);
     }
 
-    function recomponerMiembrosMesa() {
-      const nombre = prompt("Ingrese Nombre y Apellido del Miembro Reemplazante (Suplente o Fila):", "Carlos Quispe Espinoza");
-      if (!nombre) return;
-      const dni = prompt("Ingrese DNI (8 dígitos):", "45892134");
-      const cargo = prompt("Seleccione cargo a asumir (Presidente / Secretario / Tercer Miembro):", "Tercer Miembro");
+    function openEditMiembroModal(index) {
+      const state = getMesaState(activeMesa);
+      const m = state.instalacion.miembros[index] || {
+        cargo: index === 0 ? "Presidente" : index === 1 ? "Secretario" : "Tercer Miembro",
+        nombre: "",
+        dni: "",
+        condicion: "Titular",
+        firmoAsistencia: true,
+        firmoActa: true
+      };
+
+      document.getElementById('editMiembroIndex').value = index;
+      document.getElementById('editMiembroCargo').value = m.cargo || (index === 0 ? "Presidente" : index === 1 ? "Secretario" : "Tercer Miembro");
+      document.getElementById('editMiembroNombre').value = m.nombre || "";
+      document.getElementById('editMiembroDni').value = m.dni || "";
+      document.getElementById('editMiembroCondicion').value = m.condicion || "Titular";
+      document.getElementById('editMiembroAsistencia').checked = !!m.firmoAsistencia;
+      document.getElementById('editMiembroFirmaActa').checked = !!m.firmoActa;
+      
+      document.getElementById('modalEditMiembroTitle').innerText = `Editar ${m.cargo} - Mesa ${activeMesa}`;
+      document.getElementById('modalEditarMiembro').classList.remove('hidden');
+    }
+
+    function closeEditMiembroModal() {
+      document.getElementById('modalEditarMiembro').classList.add('hidden');
+    }
+
+    function saveMiembroModal() {
+      const idx = parseInt(document.getElementById('editMiembroIndex').value) || 0;
+      const cargo = document.getElementById('editMiembroCargo').value.trim();
+      const nombre = document.getElementById('editMiembroNombre').value.trim();
+      const dni = document.getElementById('editMiembroDni').value.trim();
+      const condicion = document.getElementById('editMiembroCondicion').value;
+      const firmoAsistencia = document.getElementById('editMiembroAsistencia').checked;
+      const firmoActa = document.getElementById('editMiembroFirmaActa').checked;
+
+      if (!nombre) {
+        alert("Por favor ingrese los nombres y apellidos del miembro de mesa.");
+        return;
+      }
 
       const state = getMesaState(activeMesa);
-      const targetIdx = state.instalacion.miembros.findIndex(m => m.cargo.toLowerCase().includes(cargo.toLowerCase()));
-      if (targetIdx !== -1) {
-        state.instalacion.miembros[targetIdx] = {
-          cargo: state.instalacion.miembros[targetIdx].cargo,
-          nombre: nombre,
-          dni: dni,
-          condicion: "De la Fila / Suplente",
-          firmoAsistencia: true,
-          firmoActa: true
-        };
-        saveMesaState(activeMesa, state);
-        renderMiembrosMesa(state.instalacion.miembros);
-        alert(`✓ Miembro actualizado en la mesa ${activeMesa}`);
+      if (!state.instalacion.miembros) state.instalacion.miembros = [];
+      while (state.instalacion.miembros.length <= idx) {
+        state.instalacion.miembros.push({});
       }
+
+      state.instalacion.miembros[idx] = {
+        cargo: cargo || (idx === 0 ? "Presidente" : idx === 1 ? "Secretario" : "Tercer Miembro"),
+        nombre: nombre,
+        dni: dni,
+        condicion: condicion,
+        firmoAsistencia: firmoAsistencia,
+        firmoActa: firmoActa
+      };
+
+      saveMesaState(activeMesa, state);
+      renderMiembrosMesa(state.instalacion.miembros);
+
+      // Sincronizar automáticamente con el módulo de credenciales si es titular
+      try {
+        const credList = getCredencialesState(activeMesa);
+        if (credList && credList[idx]) {
+          credList[idx].nombre = nombre;
+          if (dni) credList[idx].dni = dni;
+          saveCredencialesState(activeMesa, credList);
+          renderCredencialesModule();
+        }
+      } catch (e) {}
+
+      closeEditMiembroModal();
+    }
+
+    function recomponerMiembrosMesa() {
+      openEditMiembroModal(2); // Por defecto abre el Tercer Miembro para asignación de suplente o de la fila
     }
 
     function renderChecklistInstalacion(chk) {
@@ -3290,6 +3806,7 @@
       
       if (prefixId === 'timeInstalacion') updateInstalacionData();
       if (prefixId === 'timeSufragio') updateSufragioData();
+      if (prefixId === 'timeEscrutinioInicio' || prefixId === 'timeEscrutinioFin') updateEscrutinioHoras();
     }
 
     function setTimePreset(prefixId, hour, minute, period) {
@@ -3299,6 +3816,7 @@
       
       if (prefixId === 'timeInstalacion') updateInstalacionData();
       if (prefixId === 'timeSufragio') updateSufragioData();
+      if (prefixId === 'timeEscrutinioInicio' || prefixId === 'timeEscrutinioFin') updateEscrutinioHoras();
     }
 
     /* ========================================================
@@ -3383,6 +3901,21 @@
       alert("PASOS PARA RESOLVER DESCUADRE EN SUFRAGIO (MANUAL ONPE):\n\n1. Recontar una por una las firmas y huellas en la Lista de Electores.\n2. Recontar las cédulas sobrantes no utilizadas inutilizadas.\n3. Verificar que no haya casilleros firmados por error.\n4. Si persiste la diferencia física comprobada, se anota el número real contado en la casilla correspondiente y se deja constancia precisa en Observaciones.");
     }
 
+    function autocalcularSufragio(tipo) {
+      const state = getMesaState(activeMesa);
+      const cedulasRecibidas = state.instalacion.cedulasRecibidas || 300;
+      if (tipo === 'A') {
+        const b = parseInt(document.getElementById('inputNoUtilizadasB').value) || 0;
+        const a = Math.max(0, cedulasRecibidas - b);
+        document.getElementById('inputVotaronA').value = a;
+      } else if (tipo === 'B') {
+        const a = parseInt(document.getElementById('inputVotaronA').value) || 0;
+        const b = Math.max(0, cedulasRecibidas - a);
+        document.getElementById('inputNoUtilizadasB').value = b;
+      }
+      calculateSufragioBalance();
+    }
+
     function updateSufragioChecklist() {
       const state = getMesaState(activeMesa);
       state.sufragio.checklist = {
@@ -3396,6 +3929,21 @@
     /* ========================================================
        MODULE 3: ESCRUTINIO & HOJA BORRADOR ENGINE
        ======================================================== */
+    function updateEscrutinioHoras() {
+      const state = getMesaState(activeMesa);
+      const hi = document.getElementById('timeEscrutinioInicioHour').value;
+      const mi = document.getElementById('timeEscrutinioInicioMinute').value;
+      const pi = document.getElementById('timeEscrutinioInicioPeriod').value;
+      state.escrutinio.horaInicio = format12HourString(hi, mi, pi);
+
+      const hf = document.getElementById('timeEscrutinioFinHour').value;
+      const mf = document.getElementById('timeEscrutinioFinMinute').value;
+      const pf = document.getElementById('timeEscrutinioFinPeriod').value;
+      state.escrutinio.horaFin = format12HourString(hf, mf, pf);
+
+      saveMesaState(activeMesa, state);
+    }
+
     function verifyAnforaCedulas() {
       const state = getMesaState(activeMesa);
       const anforaQty = parseInt(document.getElementById('inputAnforaCedulas').value) || 0;
@@ -3460,15 +4008,12 @@
           <td class="py-2.5 px-3 text-center font-mono font-bold text-slate-400">${idx + 1}</td>
           <td class="py-2.5 px-3">
             <div class="flex items-center gap-2.5">
-              <div onclick="openEditPartidoModal(${p.id})" title="Haga clic para cambiar o subir logo" class="w-7 h-7 flex items-center justify-center flex-shrink-0 cursor-pointer hover:scale-110 transition-transform">
+              <div class="w-7 h-7 flex items-center justify-center flex-shrink-0">
                 ${getPartidoLogoSvg(p, 28)}
               </div>
               <div class="truncate flex-1">
-                <input type="text" value="${p.nombre}" onchange="updatePartidoNombre(${p.id}, this.value)" class="bg-transparent hover:bg-slate-900/90 focus:bg-slate-900 border-b border-transparent focus:border-blue-500 rounded px-1 py-0.5 text-xs font-semibold text-slate-100 w-full focus:outline-none truncate">
+                <span class="text-xs font-semibold text-slate-100 truncate block">${p.nombre}</span>
               </div>
-              <button onclick="openEditPartidoModal(${p.id})" title="Editar organización y logo" class="text-slate-500 hover:text-sky-400 p-1 rounded transition-colors flex-shrink-0">
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-              </button>
             </div>
           </td>
           
@@ -3890,25 +4435,65 @@
       if (!container) return;
       container.innerHTML = '';
 
+      const searchInput = document.getElementById('inputSearchCredencial');
+      const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
       let entregadasCount = 0;
+      let capacitadosCount = 0;
+      let renderedCount = 0;
+
       list.forEach((item, idx) => {
         if (item.entregada) entregadasCount++;
+        if (item.capacitado) capacitadosCount++;
+
+        if (query) {
+          const matchCargo = (item.cargo || '').toLowerCase().includes(query);
+          const matchNombre = (item.nombre || '').toLowerCase().includes(query);
+          const matchDni = (item.dni || '').toLowerCase().includes(query);
+          if (!matchCargo && !matchNombre && !matchDni) return;
+        }
+        renderedCount++;
+
         const card = document.createElement('div');
-        card.className = "p-2.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between";
+        card.className = "p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between gap-2.5";
         card.innerHTML = `
-          <div class="truncate mr-2">
-            <span class="text-[11px] font-bold text-white block truncate">${item.cargo}</span>
-            <span class="text-[10px] text-slate-400 block truncate">${item.nombre}</span>
+          <div class="flex items-start justify-between gap-2">
+            <div class="truncate flex-1 min-w-0">
+              <span class="text-[11px] font-bold text-sky-400 block truncate">${item.cargo}</span>
+              <span class="text-xs text-white font-semibold block truncate mt-0.5">${item.nombre}</span>
+              <div class="flex items-center gap-1.5 mt-0.5 text-[10px] text-slate-400">
+                ${item.dni ? `<span class="font-mono">DNI: ${item.dni}</span>` : ''}
+                ${item.capacitado ? `<span class="text-emerald-400 font-bold">• Capacitado ✓</span>` : ''}
+              </div>
+            </div>
+            <button type="button" onclick="openEditCredencialModal(${idx})" title="Editar datos y credencial" class="btn-press p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-300 hover:text-white border border-slate-700 flex-shrink-0">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+            </button>
           </div>
-          <label class="flex items-center gap-1.5 cursor-pointer flex-shrink-0">
-            <input type="checkbox" onchange="toggleCredencial(${idx})" ${item.entregada ? 'checked' : ''} class="rounded bg-slate-950 border-slate-700 text-emerald-600 focus:ring-emerald-500">
-            <span class="text-[10px] font-bold ${item.entregada ? 'text-emerald-400' : 'text-slate-400'}">${item.entregada ? 'Entregada' : 'Pendiente'}</span>
-          </label>
+
+          <div class="flex items-center justify-between pt-2 border-t border-slate-800/80">
+            <label class="flex items-center gap-1.5 cursor-pointer">
+              <input type="checkbox" onchange="toggleCredencial(${idx})" ${item.entregada ? 'checked' : ''} class="rounded bg-slate-950 border-slate-700 text-emerald-600 focus:ring-emerald-500">
+              <span class="text-[10px] font-bold ${item.entregada ? 'text-emerald-400' : 'text-slate-400'}">${item.entregada ? 'Entregada ✓' : 'Pendiente'}</span>
+            </label>
+            <label class="flex items-center gap-1 cursor-pointer">
+              <input type="checkbox" onchange="toggleCapacitado(${idx})" ${item.capacitado ? 'checked' : ''} class="rounded bg-slate-950 border-slate-700 text-blue-600 focus:ring-blue-500">
+              <span class="text-[10px] ${item.capacitado ? 'text-blue-300 font-bold' : 'text-slate-500'}">FM01</span>
+            </label>
+          </div>
         `;
         container.appendChild(card);
       });
+
+      if (renderedCount === 0 && query) {
+        container.innerHTML = `<div class="col-span-full py-8 text-center text-slate-400 text-xs">No se encontraron miembros con el criterio: "<strong class="text-white">${query}</strong>"</div>`;
+      }
+
       const countEl = document.getElementById('credencialesEntregadasCount');
       if (countEl) countEl.innerText = entregadasCount;
+
+      const capEl = document.getElementById('credencialesCapacitadosCount');
+      if (capEl) capEl.innerText = capacitadosCount;
     }
 
     function toggleCredencial(idx) {
@@ -3917,6 +4502,76 @@
       list[idx].entregada = !list[idx].entregada;
       saveCredencialesState(activeMesa, list);
       renderCredencialesModule();
+    }
+
+    function toggleCapacitado(idx) {
+      const list = getCredencialesState(activeMesa);
+      if (!list || !list[idx]) return;
+      list[idx].capacitado = !list[idx].capacitado;
+      saveCredencialesState(activeMesa, list);
+      renderCredencialesModule();
+    }
+
+    function openEditCredencialModal(idx) {
+      const list = getCredencialesState(activeMesa);
+      const item = list[idx] || { cargo: '', nombre: '', dni: '', telefono: '', entregada: false, capacitado: false };
+
+      document.getElementById('editCredencialIndex').value = idx;
+      document.getElementById('editCredencialCargo').value = item.cargo || '';
+      document.getElementById('editCredencialNombre').value = item.nombre || '';
+      document.getElementById('editCredencialDni').value = item.dni || '';
+      document.getElementById('editCredencialTelefono').value = item.telefono || '';
+      document.getElementById('editCredencialEntregada').checked = !!item.entregada;
+      document.getElementById('editCredencialCapacitado').checked = !!item.capacitado;
+
+      document.getElementById('modalEditCredencialTitle').innerText = `Editar ${item.cargo || 'Credencial'} - Mesa ${activeMesa}`;
+      document.getElementById('modalEditarCredencial').classList.remove('hidden');
+    }
+
+    function closeEditCredencialModal() {
+      document.getElementById('modalEditarCredencial').classList.add('hidden');
+    }
+
+    function saveCredencialModal() {
+      const idx = parseInt(document.getElementById('editCredencialIndex').value) || 0;
+      const cargo = document.getElementById('editCredencialCargo').value.trim();
+      const nombre = document.getElementById('editCredencialNombre').value.trim();
+      const dni = document.getElementById('editCredencialDni').value.trim();
+      const telefono = document.getElementById('editCredencialTelefono').value.trim();
+      const entregada = document.getElementById('editCredencialEntregada').checked;
+      const capacitado = document.getElementById('editCredencialCapacitado').checked;
+
+      if (!nombre) {
+        alert("Por favor ingrese los nombres y apellidos del miembro.");
+        return;
+      }
+
+      const list = getCredencialesState(activeMesa);
+      if (!list[idx]) list[idx] = {};
+      list[idx] = {
+        cargo: cargo || list[idx].cargo || 'Miembro de Mesa',
+        nombre: nombre,
+        dni: dni,
+        telefono: telefono,
+        entregada: entregada,
+        capacitado: capacitado
+      };
+
+      saveCredencialesState(activeMesa, list);
+      renderCredencialesModule();
+
+      // Sincronizar automáticamente con miembros de instalación si es titular (Presidente, Secretario, 3er Miembro)
+      if (idx >= 0 && idx <= 2) {
+        const state = getMesaState(activeMesa);
+        if (state && state.instalacion && state.instalacion.miembros && state.instalacion.miembros[idx]) {
+          state.instalacion.miembros[idx].nombre = nombre;
+          if (dni) state.instalacion.miembros[idx].dni = dni;
+          saveMesaState(activeMesa, state);
+          renderMiembrosMesa(state.instalacion.miembros);
+        }
+      }
+
+      closeEditCredencialModal();
     }
 
     /* ========================================================
@@ -3979,10 +4634,6 @@
                 N° ${index + 1}
               </span>
               <div class="flex items-center gap-1.5">
-                <button onclick="openEditPartidoModal(${org.id})" title="Editar Candidato y Cambiar o Subir Logo" class="btn-press px-2.5 py-1 rounded-lg bg-blue-900/70 hover:bg-blue-800 text-blue-200 text-[10px] font-bold border border-blue-700/60 flex items-center gap-1 transition-all">
-                  <svg class="w-3 h-3 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-                  <span>Editar / Logo</span>
-                </button>
                 <span class="px-2 py-0.5 rounded-md bg-emerald-950 text-emerald-300 text-[10px] font-bold border border-emerald-800">
                   Inscrita ONPE
                 </span>
@@ -3990,12 +4641,8 @@
             </div>
 
             <div class="flex items-center gap-3 py-1">
-              <div onclick="openEditPartidoModal(${org.id})" title="Haga clic para cambiar o subir el logo" class="w-14 h-14 rounded-xl bg-slate-950 p-1 flex items-center justify-center border border-slate-800 shadow-md flex-shrink-0 group-hover:scale-105 hover:border-sky-400 transition-all cursor-pointer relative group/logo overflow-hidden">
+              <div class="w-14 h-14 rounded-xl bg-slate-950 p-1 flex items-center justify-center border border-slate-800 shadow-md flex-shrink-0">
                 ${getPartidoLogoSvg(org, 48)}
-                <div class="absolute inset-0 bg-black/70 rounded-xl opacity-0 group-hover/logo:opacity-100 flex flex-col items-center justify-center text-[9px] text-white font-bold transition-opacity">
-                  <svg class="w-3.5 h-3.5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                  <span>Subir</span>
-                </div>
               </div>
 
               <div class="min-w-0 flex-1">
@@ -4105,7 +4752,7 @@
             <td class="py-3 px-3 text-center font-mono font-bold text-slate-400">${idx + 1}</td>
             <td class="py-3 px-3">
               <div class="flex items-center gap-2.5">
-                <div onclick="openEditPartidoModal(${p.id})" title="Haga clic para cambiar o subir logo" class="w-8 h-8 flex items-center justify-center flex-shrink-0 cursor-pointer hover:scale-110 transition-transform">
+                <div class="w-8 h-8 flex items-center justify-center flex-shrink-0">
                   ${getPartidoLogoSvg(p, 30)}
                 </div>
                 <div class="truncate">
@@ -4121,11 +4768,6 @@
             <td class="py-3 px-2 text-center">${badge(p.participa.cons)}</td>
             <td class="py-3 px-2 text-center">${badge(p.participa.prov)}</td>
             <td class="py-3 px-2 text-center">${badge(p.participa.dist)}</td>
-            <td class="py-3 px-2 text-center">
-              <button onclick="openEditPartidoModal(${p.id})" title="Editar Candidato y Cambiar Logo" class="btn-press px-2.5 py-1 rounded-lg bg-sky-900/60 hover:bg-sky-800 text-sky-200 border border-sky-700/60 text-[11px] font-bold">
-                ✏️ Editar
-              </button>
-            </td>
           </tr>
         `;
       }).join('');
@@ -4138,12 +4780,8 @@
               <p class="text-xs text-slate-400">Resumen integral de las organizaciones políticas registradas en los carteles oficiales de Apurímac, Abancay y Curahuasi.</p>
             </div>
             <div class="flex items-center gap-2">
-              <button onclick="openAdminPartidosModal()" class="btn-press px-3 py-1.5 rounded-xl bg-indigo-900/70 hover:bg-indigo-800 text-indigo-200 border border-indigo-600/50 text-xs font-bold flex items-center gap-1.5 shadow-sm">
-                <svg class="w-3.5 h-3.5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-                <span>Administrar</span>
-              </button>
               <span class="text-xs font-mono px-2.5 py-1 rounded-xl bg-blue-950 text-blue-300 border border-blue-800">
-                ${PARTIDOS_CATALOGO.length} Organizaciones
+                ${PARTIDOS_CATALOGO.length} Organizaciones Oficiales
               </span>
             </div>
           </div>
@@ -4158,7 +4796,6 @@
                   <th class="py-3 px-2 text-center font-bold">2. Consejero</th>
                   <th class="py-3 px-2 text-center font-bold">3. Prov. Abancay</th>
                   <th class="py-3 px-2 text-center font-bold">4. Dist. Curahuasi</th>
-                  <th class="py-3 px-2 text-center font-bold">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -4587,6 +5224,19 @@ _Enviado desde Asistente Electoral CM - ONPE_`;
       const promptEl = document.getElementById('loginPromptMsg');
       if (promptEl) promptEl.classList.add('hidden');
     });
+
+    // Advertencia antes de cerrar o recargar si hay una sesión activa en escrutinio
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      window.addEventListener('beforeunload', (e) => {
+        if (currentUser && activeMesa) {
+          const state = getMesaState(activeMesa);
+          if (state && state.stage === 'escrutinio') {
+            e.preventDefault();
+            e.returnValue = '';
+          }
+        }
+      });
+    }
   </script>
 </body>
 </html>
